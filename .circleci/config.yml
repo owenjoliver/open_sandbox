@@ -1,18 +1,12 @@
 version: 2.1
-
-jobs:
-  emoji:
-    docker:
-      - image: cimg/base:stable
-    resource_class: owenjoliver/ec2_mac
-    steps:
-      - checkout
-      - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
-
 workflows:
-  ci:
+  testing:
     jobs:
-      - emoji:
-          name: "Emoji"
+      - runner
+jobs:
+  runner:
+    machine: true
+    resource_class: owenjoliver/aws
+    steps:
+      - run: echo "Hi I'm on Runners!"
+      - run: sleep 5m
