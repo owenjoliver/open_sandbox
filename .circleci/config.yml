@@ -19,7 +19,7 @@ jobs:
             command: |
               & 'C:\Users\circleci\LicenseSupportInstallerWin64_v5.7.1_fbd47960\License Support Win64.exe' -s -f1“C:\Users\circleci\SilentInstall.iss”
             shell: powershell.exe
-        - run: dir 'C:\Program Files (x86)\iLok License Manager\'
+        - run: dir 'C:\Program Files (x86)\'
 workflows:
   workflow:
     jobs:
