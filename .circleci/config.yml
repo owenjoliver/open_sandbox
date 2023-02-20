@@ -10,6 +10,7 @@ jobs:
     steps:
         - run: Invoke-WebRequest -Uri https://github.com/owenjoliver/open_sandbox/blob/main/SilentInstall.iss -OutFile C:\Users\circleci\SilentInstall.iss
         - run: dir C:\Users\circleci
+        - run: type C:\Users\circleci\SilentInstall.iss
         - run: 
             command: |
               Invoke-WebRequest -Uri https://installers.ilok.com/iloklicensemanager/LicenseSupportInstallerWin64.zip -OutFile C:\Users\circleci\License.zip
