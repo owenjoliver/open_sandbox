@@ -8,8 +8,7 @@ jobs:
      shell: powershell.exe
     working_directory: C:\Users\circleci\project
     steps:
-        - run: Invoke-WebRequest -Uri https://github.com/owenjoliver/open_sandbox/blob/main/SilentInstall.iss.txt -OutFile C:\Users\circleci\SilentInstall.iss.txt
-        - run: mv C:\Users\circleci\SilentInstall.iss.txt C:\Users\circleci\SilentInstall.iss
+        - run: curl https://github.com/owenjoliver/open_sandbox/blob/main/SilentInstall.iss -O C:\Users\circleci\SilentInstall.iss.txt
         - run: dir C:\Users\circleci
         - run: type C:\Users\circleci\SilentInstall.iss
         - run: 
