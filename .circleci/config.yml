@@ -8,7 +8,7 @@ jobs:
      shell: powershell.exe
     working_directory: C:\Users\circleci\project
     steps:
-        - checkout
+        - run: Invoke-WebRequest -Uri https://github.com/owenjoliver/open_sandbox/blob/main/SilentInstall.iss -OutFile C:\Users\circleci\SilentInstall.iss
         - run: dir C:\Users\circleci
         - run: 
             command: |
@@ -17,7 +17,7 @@ jobs:
             shell: powershell.exe
         - run: 
             command: |
-              & 'C:\Users\circleci\LicenseSupportInstallerWin64_v5.7.1_fbd47960\License Support Win64.exe' -s -f1“C:\Users\circleci\project\SilentInstall.iss”
+              & 'C:\Users\circleci\LicenseSupportInstallerWin64_v5.7.1_fbd47960\License Support Win64.exe' -s -f1“C:\Users\circleci\SilentInstall.iss”
             shell: powershell.exe
         - run: dir 'C:\Program Files (x86)\iLok License Manager\'
 workflows:
