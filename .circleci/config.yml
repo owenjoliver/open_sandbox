@@ -1,17 +1,26 @@
 version: 2.1
-
+orbs:
+  win: circleci/windows@5.0
 jobs:
-  emoji:
-    docker:
-      - image: cimg/base:stable
+  build:
+    executor:
+     name: win/default
+     shell: powershell.exe
+    working_directory: C:\Users\circleci\project
     steps:
-      - checkout
-      - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
-
+        - checkout
+        - run: dir C:\Users\circleci
+        - run: 
+            command: |
+              Invoke-WebRequest -Uri https://installers.ilok.com/iloklicensemanager/LicenseSupportInstallerWin64.zip -OutFile C:\Users\circleci\License.zip
+              Expand-Archive -Path C:\Users\circleci\License.zip -DestinationPath C:\Users\circleci\
+            shell: powershell.exe
+        - run: 
+            command: |
+              & 'C:\Users\circleci\LicenseSupportInstallerWin64_v5.7.0_5c8e5aed\License Support Win64.exe' -s -f1“C:\Users\circleci\project\SilentInstall.iss”
+            shell: powershell.exe
+        - run: dir 'C:\Program Files (x86)\iLok License Manager\'
 workflows:
-  ci:
+  workflow:
     jobs:
-      - emoji:
-          name: "🌀 Emoji"
+      - build
