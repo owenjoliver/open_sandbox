@@ -8,7 +8,7 @@ jobs:
      shell: powershell.exe
     working_directory: C:\Users\circleci\project
     steps:
-        - run: curl https://github.com/owenjoliver/open_sandbox/blob/main/SilentInstall.iss -O C:\Users\circleci\SilentInstall.iss
+        - run: curl https://raw.githubusercontent.com/owenjoliver/open_sandbox/main/SilentInstall.iss -O C:\Users\circleci\SilentInstall.iss
         - run: dir C:\Users\circleci
         - run: type C:\Users\circleci\SilentInstall.iss
         - run: 
